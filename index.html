@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker | Simple PWA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h1>Simple Habit Tracker</h1>
+      <p class="subtitle">Build better habits one day at a time</p>
+    </header>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-value" id="total-habits">0</div>
+        <div class="stat-label">Total Habits</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="daily-habits">0</div>
+        <div class="stat-label">Daily Habits</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="completed-today">0</div>
+        <div class="stat-label">Completed Today</div>
+      </div>
+    </div>
+    
+    <div class="habits-container">
+      <h2 class="section-title">
+        <i class="fas fa-tasks"></i>
+        Your Habits
+      </h2>
+      
+      <div class="habits-list" id="habits-list">
+        <!-- Habits will be dynamically added here -->
+      </div>
+    </div>
+    
+    <button class="add-btn" id="add-btn">
+      <i class="fas fa-plus"></i>
+    </button>
+    
+    <button class="install-btn" id="install-btn" style="display: none;">
+      <i class="fas fa-download"></i> Install App
+    </button>
+  </div>
+  
+  <!-- Modal for adding/editing habits -->
+  <div class="modal" id="habit-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Add New Habit</h3>
+        <button class="close-btn" id="close-modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form id="habit-form">
+        <input type="hidden" id="habit-id">
+        
+        <div class="form-group">
+          <label for="habit-name">Habit Name</label>
+          <input type="text" id="habit-name" placeholder="e.g., Drink Water" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="habit-description">Description (Optional)</label>
+          <textarea id="habit-description" placeholder="e.g., Drink 8 glasses of water per day"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="habit-frequency">Frequency</label>
+          <select id="habit-frequency" required>
+            <option value="Daily">Daily</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Monthly">Monthly</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn-submit">
+          <span id="submit-text">Add Habit</span>
+        </button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+  
+
+</body>
+</html>
